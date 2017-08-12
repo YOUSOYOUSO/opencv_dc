@@ -21,7 +21,8 @@ int readVideo()
 	{
 		Mat frame;
 		//从cap中读一帧，存到frame 
-		cap >> frame;         //如果未读到图像 
+		cap >> frame;         
+		//如果未读到图像 
 		if (frame.empty()) {
 			break;
 		}
