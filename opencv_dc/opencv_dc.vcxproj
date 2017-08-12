@@ -19,7 +19,6 @@
     </ProjectConfiguration>
   </ItemGroup>
   <ItemGroup>
-    <ClCompile Include="1.cpp" />
     <ClCompile Include="main.cpp" />
     <ClCompile Include="readImg.cpp" />
     <ClCompile Include="readVideo.cpp" />
