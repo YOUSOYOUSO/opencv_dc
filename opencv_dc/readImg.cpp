@@ -19,6 +19,7 @@ int readImg()
 	//等待两秒
 	waitKey(2000);
 
+
 	Mat result;
 	//进行Canny操作，并将结果存于result 
 	Canny(im, result, 50, 150);

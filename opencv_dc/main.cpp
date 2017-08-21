@@ -3,7 +3,8 @@
 #include <opencv2/highgui/highgui.hpp>  
 extern int readImg();
 extern int readVideo();
+extern int readVideo1();
 int  main() {
-	readVideo();
+	readImg();
 	return 0;
 }

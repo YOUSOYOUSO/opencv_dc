@@ -4,7 +4,6 @@
 using namespace std; using namespace cv;
 int readVideo()
 {
-
 	//打开视频文件 
 	VideoCapture cap("1.mp4");
 
@@ -17,6 +16,10 @@ int readVideo()
 
 	Mat edges;     //创建窗口 
 	namedWindow("edges", 1);
+	IplImage *nFrames = NULL;
+	CvCapture* pCapture = NULL;
+	int numFrames = (int)cvGetCaptureProperty(pCapture, CV_CAP_PROP_FRAME_COUNT);
+	int fps = (int)cvGetCaptureProperty(pCapture, CV_CAP_PROP_FPS);
 	for (;;)
 	{
 		Mat frame;
