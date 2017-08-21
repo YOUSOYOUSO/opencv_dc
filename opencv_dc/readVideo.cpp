@@ -35,6 +35,5 @@ int readVideo()
 		waitKey(100);
 
 	}
-	//退出时会自动释放cap中占用资源     
 	return 0;
 }
