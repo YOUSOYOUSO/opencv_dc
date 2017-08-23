@@ -21,10 +21,10 @@
     <ClCompile Include="readImg.cpp">
       <Filter>源文件</Filter>
     </ClCompile>
-    <ClCompile Include="readVideo.cpp">
+    <ClCompile Include="BianYuanTQ.cpp">
       <Filter>源文件</Filter>
     </ClCompile>
-    <ClCompile Include="readVideo1.cpp">
+    <ClCompile Include="QianJingTQ.cpp">
       <Filter>源文件</Filter>
     </ClCompile>
   </ItemGroup>
