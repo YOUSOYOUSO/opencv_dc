@@ -17,7 +17,29 @@
 using namespace cv;
 using namespace std;
 
-void chao_thinimage(Mat &srcimage);
+int bSums(Mat src)
+{
+	int counter1 = 0;
+	Mat_<uchar>::iterator it = src.begin<uchar>();
+	Mat_<uchar>::iterator itend = src.end<uchar>();
+	for (; it != itend; ++it)
+	{
+		if ((*it)>0) counter1 += 1;//二值化后，像素点是0或者255
+	}
+	return counter1;
+}
+
+int hSums(Mat srb)
+{
+	int counter2 = 0;
+	Mat_<uchar>::iterator it = srb.begin<uchar>();
+	Mat_<uchar>::iterator itend = srb.end<uchar>();
+	for (; it != itend; ++it)
+	{
+		if ((*it) == 0) counter2 += 1;//二值化后，像素点是0或者255
+	}
+	return counter2;
+}
 
 int QianJing_BJ() {
 	IplImage* pFrame = NULL;//视频中截取的一帧
@@ -29,12 +51,9 @@ int QianJing_BJ() {
 	CvMat* pFrMat = NULL;//当前前景图矩阵
 	CvMat* pBkMat = NULL;//当前背景图矩阵
 
+	IplConvKernel* Element = cvCreateStructuringElementEx(13, 13, 1, 1, CV_SHAPE_RECT, NULL);//形态学处理时内核大小
 
-						 //形态学处理时内核大小
-	IplConvKernel* Element = cvCreateStructuringElementEx(13, 13, 1, 1, CV_SHAPE_RECT, NULL);
-
-	//轮廓边缘提取时的参数
-	CvMemStorage* storage = cvCreateMemStorage(0);
+	CvMemStorage* storage = cvCreateMemStorage(0);//轮廓边缘提取时的参数
 	CvSeq* contour = 0;//可动态增长元素序列
 	int mode = CV_RETR_EXTERNAL;//只检索最外面的轮廓
 
@@ -151,6 +170,13 @@ int QianJing_BJ() {
 				break;
 
 		}
+		Mat mating= cvarrToMat(pFrImg);
+		float a = bSums(mating);//调用函数bSums
+		cout << "前景像素:" << a << " ";
+		float b = hSums(mating);
+		cout << "总像素:" << a + b << " ";
+		float c = a / (a + b);
+		cout << "前景像素/总像素:" << c << "\n";
 		waitKey(50);
 	}//while循环结束
 	 //删除结构元素
