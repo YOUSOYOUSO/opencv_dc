@@ -19,10 +19,16 @@
     </ProjectConfiguration>
   </ItemGroup>
   <ItemGroup>
+    <ClCompile Include="bSums.cpp" />
+    <ClCompile Include="QianJing_BJ.cpp" />
+    <ClCompile Include="readImg2.cpp" />
     <ClCompile Include="main.cpp" />
     <ClCompile Include="readImg.cpp" />
     <ClCompile Include="BianYuanTQ.cpp" />
     <ClCompile Include="QianJingTQ.cpp" />
+  </ItemGroup>
+  <ItemGroup>
+    <ClInclude Include="GLCM.h" />
   </ItemGroup>
   <PropertyGroup Label="Globals">
     <VCProjectVersion>15.0</VCProjectVersion>

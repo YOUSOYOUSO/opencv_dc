@@ -1,16 +1,46 @@
-#include <opencv2/core/core.hpp>
-#include <opencv2/highgui/highgui.hpp>
-#include <opencv2/imgproc/imgproc.hpp>
+#include "opencv2/highgui/highgui.hpp"  
+#include "opencv2/imgproc/imgproc.hpp"  
+#include "opencv2/core/core.hpp"
+#include <opencv\ml.h>
 #include <iostream>
-#define threshold_diff 20
-
+#include "cv.h"
+#include "highgui.h"
+#include <vector>
+#include <math.h>
+#include <string.h>
+#include <fstream>
 using namespace std;
 using namespace cv;
+#define threshold_diff 20
+
+int bSums(Mat src)
+{
+	int counter1 = 0;
+	Mat_<uchar>::iterator it = src.begin<uchar>();
+	Mat_<uchar>::iterator itend = src.end<uchar>();
+	for (; it != itend; ++it)
+	{
+		if ((*it)>0) counter1+= 1;//二值化后，像素点是0或者255
+	}
+	return counter1;
+}
+
+int hSums(Mat srb)
+{
+	int counter2 = 0;
+	Mat_<uchar>::iterator it = srb.begin<uchar>();
+	Mat_<uchar>::iterator itend = srb.end<uchar>();
+	for (; it != itend; ++it)
+	{
+		if ((*it)==0) counter2+= 1;//二值化后，像素点是0或者255
+	}
+	return counter2;
+}
 
 int QianJingTQ()
 {
 	//打开视频文件：其实就是建立一个VideoCapture结构
-	VideoCapture capture("1.mp4");
+	VideoCapture capture("2.mp4");
 	//检测是否正常打开:成功打开时，isOpened返回ture
 	if (!capture.isOpened())
 	{
@@ -90,7 +120,7 @@ int QianJingTQ()
 		morphologyEx(gray1, closed, MORPH_CLOSE, sa);
 		Mat opened;
 		morphologyEx(gray1, opened, MORPH_OPEN, sa);
-		waitKey(5);
+		waitKey(delay);
 		//获取后一帧图像
 		capture >> img_src2;
 		//滤波
@@ -109,12 +139,12 @@ int QianJingTQ()
 		morphologyEx(gray2, closed, MORPH_CLOSE, sb);
 		opened;
 		morphologyEx(gray2, opened, MORPH_OPEN, sb);
-		waitKey(5);
+		waitKey(delay);
 		//背景差发后一帧减前一帧得到移动物体
 		subtract(gray1, gray2, gray_diff);
 		for (int i = 0; i<gray_diff.rows; i++)
 			for (int j = 0; j<gray_diff.cols; j++)
-				if (abs(gray_diff.at<unsigned char>(i, j)) >= threshold_diff)//这里模板参数一定要用unsigned char，否则就一直报错
+				if (abs(gray_diff.at<unsigned char>(i, j)) >= threshold_diff)//二值化，这里模板参数一定要用unsigned char，否则就一直报错
 					gray_diff.at<unsigned char>(i, j) = 255;
 				else gray_diff.at<unsigned char>(i, j) = 0;
 				//设置阈值
@@ -132,6 +162,12 @@ int QianJingTQ()
 				morphologyEx(gray_diff, opened, MORPH_OPEN, sc);
 				//显示前景物体
 				imshow("foreground", gray_diff);
+				float a = bSums(gray_diff);//调用函数bSums
+				cout << "前景像素:" << a<<" ";
+				float b = hSums(gray_diff);
+				cout << "总像素:" << a + b<<" ";
+				float c = a / (a + b);
+				cout << "前景像素/总像素:" << c<<" ";
 				//刷新图像	
 				//waitKey(int delay=0)当delay ≤ 0时会永远等待；当delay>0时会等待delay毫秒
 				waitKey(delay);
