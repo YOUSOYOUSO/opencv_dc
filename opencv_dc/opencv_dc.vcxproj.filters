@@ -30,10 +30,10 @@
     <ClCompile Include="readImg2.cpp">
       <Filter>源文件</Filter>
     </ClCompile>
-    <ClCompile Include="bSums.cpp">
+    <ClCompile Include="QianJing_BJ.cpp">
       <Filter>源文件</Filter>
     </ClCompile>
-    <ClCompile Include="QianJing_BJ.cpp">
+    <ClCompile Include="testBJC.cpp">
       <Filter>源文件</Filter>
     </ClCompile>
   </ItemGroup>

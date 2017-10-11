@@ -8,8 +8,9 @@ extern int BianYuanTQ();
 extern int QianJingTQ();
 extern int readImg2();
 extern int QianJing_BJ();
+extern int testBJC();
 int main()
 {
-	QianJing_BJ();
+	testBJC();
 	return 0;
 }
