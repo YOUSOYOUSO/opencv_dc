@@ -26,6 +26,7 @@
     <ClCompile Include="BianYuanTQ.cpp" />
     <ClCompile Include="QianJingTQ.cpp" />
     <ClCompile Include="testBJC.cpp" />
+    <ClCompile Include="WriteExcel.cpp" />
   </ItemGroup>
   <ItemGroup>
     <ClInclude Include="GLCM.h" />

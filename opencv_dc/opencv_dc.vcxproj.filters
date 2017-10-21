@@ -36,6 +36,9 @@
     <ClCompile Include="testBJC.cpp">
       <Filter>源文件</Filter>
     </ClCompile>
+    <ClCompile Include="WriteExcel.cpp">
+      <Filter>源文件</Filter>
+    </ClCompile>
   </ItemGroup>
   <ItemGroup>
     <ClInclude Include="GLCM.h">
