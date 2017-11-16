@@ -32,8 +32,9 @@ int testBJC()
 		cvtColor(background, background, CV_RGB2GRAY);//转为灰度图
 
 		ofstream File;//ofstream类实现向文件写内容
-		File.open("test.xls", ios::_Noreplace|fstream::trunc);//ios::_Noreplace 打开一个文件时，如果文件不存在，创建该文件
+		File.open("test.xls", ios::_Noreplace | fstream::trunc);//ios::_Noreplace 打开一个文件时，如果文件不存在，创建该文件
 		vector<int>ivec(totalFrameNumber);//可变数组ivec，大小为总帧
+
 
 		while (capture.read(temp))
 		{
