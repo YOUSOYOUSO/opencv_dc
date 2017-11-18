@@ -39,6 +39,9 @@
     <ClCompile Include="WriteExcel.cpp">
       <Filter>源文件</Filter>
     </ClCompile>
+    <ClCompile Include="SaveVideo.cpp">
+      <Filter>源文件</Filter>
+    </ClCompile>
   </ItemGroup>
   <ItemGroup>
     <ClInclude Include="GLCM.h">

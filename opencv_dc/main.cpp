@@ -9,8 +9,9 @@ extern int QianJingTQ();
 extern int readImg2();
 extern int QianJing_BJ();
 extern int testBJC();
+extern int saveVideo();
 int main()
 {
-	testBJC();
+	saveVideo();
 	return 0;
 }

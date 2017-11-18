@@ -35,7 +35,6 @@ int testBJC()
 		File.open("test.xls", ios::_Noreplace | fstream::trunc);//ios::_Noreplace 打开一个文件时，如果文件不存在，创建该文件
 		vector<int>ivec(totalFrameNumber);//可变数组ivec，大小为总帧
 
-
 		while (capture.read(temp))
 		{
 
@@ -66,7 +65,7 @@ int testBJC()
 
 			imshow("当前视频", result);
 			imshow("背景图片", background);
-			waitKey(10);
+			waitKey(50);
 
 			File << PixelCount << endl;	//写入excel
 
