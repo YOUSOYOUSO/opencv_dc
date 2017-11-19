@@ -26,6 +26,7 @@
     <ClCompile Include="BianYuanTQ.cpp" />
     <ClCompile Include="QianJingTQ.cpp" />
     <ClCompile Include="SaveVideo.cpp" />
+    <ClCompile Include="SaveVideo2.cpp" />
     <ClCompile Include="testBJC.cpp" />
     <ClCompile Include="WriteExcel.cpp" />
   </ItemGroup>
